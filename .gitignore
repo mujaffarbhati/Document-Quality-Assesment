@@ -15,4 +15,5 @@
 /client/yarn-debug.log*
 /client/yarn-error.log*
 /client/.env
+/server/.env
 /client/package-lock.json
