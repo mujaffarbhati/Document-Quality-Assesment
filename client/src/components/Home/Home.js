@@ -3,12 +3,12 @@ import React from "react";
 import Hero from "./Hero";
 import About from "./AboutUs";
 import InputSection from "./InputSection";
-const Home = ({handleSubmit}) => {
+const Home = ({ handleSubmit, result }) => {
   return (
-    <Grid >
+    <Grid>
       <Hero />
       <About />
-      <InputSection handleSubmit={handleSubmit}/>
+      <InputSection handleSubmit={handleSubmit} result={result} />
     </Grid>
   );
 };

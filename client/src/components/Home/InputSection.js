@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Grid, Typography } from "@mui/material";
 
-function ImageUploader({ handleSubmit }) {
+function ImageUploader({ handleSubmit, result }) {
   const [image, setImage] = useState(null);
 
   const handleDrop = (e) => {
@@ -9,9 +9,10 @@ function ImageUploader({ handleSubmit }) {
     let reader = new FileReader();
     let file = e.dataTransfer.files[0];
 
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
+    // reader.onloadend = () => {
+    // setImage(reader.result);
+    // };
+    setImage(e.target.files[0]);
 
     reader.readAsDataURL(file);
     console.log(image);
@@ -27,9 +28,10 @@ function ImageUploader({ handleSubmit }) {
       let reader = new FileReader();
       let file = e.target.files[0];
 
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
+      // reader.onloadend = () => {
+      //   setImage(reader.result);
+      // };
+      setImage(e.target.files[0]);
 
       reader.readAsDataURL(file);
     };
@@ -38,34 +40,57 @@ function ImageUploader({ handleSubmit }) {
   const handleDragOver = (e) => {
     e.preventDefault();
   };
-
+  let resultText = "";
+  if (result === 0) resultText = "Very Bad";
+  if (result === 1) resultText = "Bad";
+  if (result === 2) resultText = "Good";
+  if (result === 3) resultText = "Very Good";
+  let resultColor = "#ff0000";
   return (
     <Grid sx={{ pt: 15 }} className="input-container" id="assess">
       <Typography variant="h3" className="title" sx={{ fontWeight: "bolder" }}>
         Assess Document
       </Typography>
       <Grid
-        sx={{ mt: 10 }}
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-        style={{
-          width: "450px",
-          height: "300px",
-          border: "2px dashed var(--matt-black)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          maxWidth: "100%",
-        }}
-        onClick={handleClick}
+      // sx={{ mt: 10 }}
+      // onDrop={handleDrop}
+      // onDragOver={handleDragOver}
+      // style={{
+      //   width: "450px",
+      //   height: "300px",
+      //   border: "2px dashed var(--matt-black)",
+      //   display: "flex",
+      //   alignItems: "center",
+      //   justifyContent: "center",
+      //   cursor: "pointer",
+      //   maxWidth: "100%",
+      // }}
+      // onClick={handleClick}
       >
+        <input
+          type="file"
+          id="images"
+          accept="image/*"
+          required
+          onDrop={handleDrop}
+          // onDragOver={handleDragOver}
+          style={{
+            width: "450px",
+            height: "300px",
+            border: "2px dashed var(--matt-black)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            maxWidth: "100%",
+          }}
+          onClick={handleClick}
+        />
         {image ? (
           <img src={image} alt="Uploaded Image" className="uploaded-image" />
         ) : (
           <p>Drop an image here to upload</p>
         )}
-
         {/* <button onClick={handleSubmit}>Submit</button> */}
       </Grid>
       {image && (
@@ -81,6 +106,14 @@ function ImageUploader({ handleSubmit }) {
       >
         Submit
       </Button>
+      {result && (
+        <Typography className="result-text" sx={{ pt: 24 }} variant="h2">
+          Your Image quality is{" "}
+          <span style={{ color: resultColor }}>{resultText}</span>
+          ! <br />
+          {result === 0 && "Please upload a clear picture"}
+        </Typography>
+      )}
     </Grid>
   );
 }

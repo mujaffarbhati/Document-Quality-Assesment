@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { Button, Grid, List, ListItem, Typography } from "@mui/material";
+import { Grid, List, ListItem, Typography } from "@mui/material";
 import { Divider } from "@mui/material";
 
 import logo from "../../assets/logo.webp";

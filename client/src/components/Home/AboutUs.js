@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
-import aboutusIcon from "../../assets/about_us.png";
+import aboutImage from "../../assets/about.png";
+
 const About = () => {
   return (
     <Grid
@@ -23,6 +24,7 @@ const About = () => {
         your unstructured data is easily readable by all. Ensure the clarity and
         quality of your data today with our platform.
       </Typography>
+      <img className="about-image" src={aboutImage} alt="about"/>
     </Grid>
   );
 };
