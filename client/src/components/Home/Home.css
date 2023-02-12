@@ -81,7 +81,7 @@
 
 .input-section > span {
   color: var(--matt-black) !important;
-}
+} 
 
 .uploaded-image {
   max-width: 100%;
@@ -90,4 +90,31 @@
 .about-image {
   max-width: 50%;
   margin: 30px auto;
+}
+/* #images::-webkit-file-upload-button {
+  display: none;
+} */
+#uploaded-img-preview {
+  max-width: 500px;
+  margin-top: 10px;
+}
+input::file-selector-button {
+  background-color: var(--matt-black) !important;
+  width: fit-content !important;
+  margin-top: 2.5rem !important;
+  font-size: 1.3rem !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  color: var(--yellow-2) !important;
+  font-weight: 600 !important;
+  padding: 5px 20px !important;
+  transition: all 0.3s !important;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+}
+input::file-selector-button:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+button:hover{
+  cursor: pointer;
 }

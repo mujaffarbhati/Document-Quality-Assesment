@@ -48,7 +48,11 @@ function ImageUploader({ handleSubmit, result }) {
   let resultColor = "#ff0000";
   return (
     <Grid sx={{ pt: 15 }} className="input-container" id="assess">
-      <Typography variant="h3" className="title" sx={{ fontWeight: "bolder" }}>
+      <Typography
+        variant="h3"
+        className="title"
+        sx={{ fontWeight: "bolder", mb: 4 }}
+      >
         Assess Document
       </Typography>
       <Grid
@@ -75,29 +79,33 @@ function ImageUploader({ handleSubmit, result }) {
           onDrop={handleDrop}
           // onDragOver={handleDragOver}
           style={{
-            width: "450px",
-            height: "300px",
-            border: "2px dashed var(--matt-black)",
+            // width: "450px",
+            // height: "300px",
+            // border: "2px dashed var(--matt-black)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
             maxWidth: "100%",
+            margin: "auto",
           }}
           onClick={handleClick}
         />
-        {image ? (
-          <img src={image} alt="Uploaded Image" className="uploaded-image" />
-        ) : (
-          <p>Drop an image here to upload</p>
+        {image && (
+          <img
+            id="uploaded-img-preview"
+            src={URL.createObjectURL(image)}
+            alt="Uploaded Image"
+            className="uploaded-image"
+          />
         )}
         {/* <button onClick={handleSubmit}>Submit</button> */}
       </Grid>
-      {image && (
+      {/* {image && (
         <Typography variant="subtitle2" sx={{ mt: 2 }}>
           Click on the above image to change
         </Typography>
-      )}
+      )} */}
       <Button
         className="button"
         disabled={image == null}
@@ -106,14 +114,14 @@ function ImageUploader({ handleSubmit, result }) {
       >
         Submit
       </Button>
-      {result && (
+      {/* {result && (
         <Typography className="result-text" sx={{ pt: 24 }} variant="h2">
           Your Image quality is{" "}
           <span style={{ color: resultColor }}>{resultText}</span>
           ! <br />
           {result === 0 && "Please upload a clear picture"}
         </Typography>
-      )}
+      )} */}
     </Grid>
   );
 }
