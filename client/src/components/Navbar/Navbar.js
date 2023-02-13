@@ -10,9 +10,14 @@ const Navbar = () => {
   return (
     <Grid className="navbar-outer-container">
       <Grid className="navbar-container">
-        <Grid className="logo-container" flex>
-          <img src={logo} alt="logo" />
-        </Grid>
+        <Link to="/#top">
+          <Grid className="logo-container" flex>
+            <img src={logo} alt="logo" />
+          </Grid>
+        </Link>
+        {/* <Grid className="logo-container" flex> */}
+        {/* <img src={logo} alt="logo" /> */}
+        {/* </Grid> */}
 
         <Grid sx={{ flexGrow: 1 }} />
         <List className="nav-section">
@@ -32,7 +37,10 @@ const Navbar = () => {
           />
         </List>
         <Link to="/#footer">
-          <Typography className="contact blue-button" sx={{ ml: 4 }}>
+          <Typography
+            className="contact blue-button"
+            sx={{ ml: 4, mt: "0 !important" }}
+          >
             Contact
           </Typography>
         </Link>

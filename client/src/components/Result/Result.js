@@ -18,7 +18,7 @@ const Result = ({ result, ocrText }) => {
         ! <br />
         {result === 0 && "Please upload a clear picture"}
       </Typography>
-      {result === 1 && (
+      {/* {result === 1 && (
         // TODO - ADD LOADER
         <Grid
           sx={{
@@ -35,7 +35,7 @@ const Result = ({ result, ocrText }) => {
             Optimize to Obtain OCR Text
           </Button>
         </Grid>
-      )}
+      )} */}
 
       {(result === 2 || result === 3) && (
         <Typography variant="h6" sx={{ mb: 2, mt: 4 }}>

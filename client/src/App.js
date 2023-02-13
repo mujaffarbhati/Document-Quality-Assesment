@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
+  Routes,
   Route,
-  Switch,
-  useHistory,
+  Navigate,
 } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -21,7 +21,6 @@ function App() {
   // const navigate = useNavigate();
   const [result, setResult] = useState();
   const [ocrText, setOcrText] = useState();
-  const history = useHistory();
 
   // 0 - very bad
   // 1 - bad
@@ -30,7 +29,7 @@ function App() {
 
   const handleSubmit = async (e, image) => {
     e.preventDefault();
-    console.log({ image });
+    // console.log({ image });
     const formData = new FormData();
     formData.append("image", image);
     try {
@@ -38,10 +37,6 @@ function App() {
         .post(`http://localhost:5000/hope2`, formData)
         .then((response) => {
           setResult(Number(response.data));
-          // console.log(response.data);
-          // navigate("/result");
-          // <Navigate to={"/result"} replace={true} />;
-          history.push("/result");
         });
     } catch (err) {
       console.log("Image Post Error ", err);
@@ -49,31 +44,19 @@ function App() {
   };
   return (
     <Router>
+      {/* {result && <Navigate to="/result" />} */}
       <Navbar />
-      {/* <Switch>
-        <Route
-          exact
-          path="/"
-          component={<Home handleSubmit={handleSubmit} />}
-        />
+      <Routes>
         <Route
           exact
           path="/result"
-          component={<Result result={result} ocrText={ocrText} />}
-        />
-      </Switch> */}
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => <Home handleSubmit={handleSubmit} result={result} />}
+          element={<Result result={result} ocrText={ocrText} />}
         />
         <Route
-          exact
           path="/"
-          render={() => <Result result={result} ocrText={ocrText} />}
+          element={<Home handleSubmit={handleSubmit} result={result} />}
         />
-      </Switch>
+      </Routes>
       <Footer />
     </Router>
   );
