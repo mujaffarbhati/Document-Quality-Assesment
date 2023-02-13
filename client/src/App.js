@@ -44,7 +44,11 @@ function App() {
   };
   return (
     <Router>
+<<<<<<< HEAD
       {/* {result && <Navigate to="/result" />} */}
+=======
+      {result && <Navigate to="/result" />}
+>>>>>>> 1d7850e301a3d5f70241f434053abcd162740fd3
       <Navbar />
       <Routes>
         <Route
@@ -52,10 +56,14 @@ function App() {
           path="/result"
           element={<Result result={result} ocrText={ocrText} />}
         />
+<<<<<<< HEAD
         <Route
           path="/"
           element={<Home handleSubmit={handleSubmit} result={result} />}
         />
+=======
+        <Route path="/" element={<Home handleSubmit={handleSubmit} />} />
+>>>>>>> 1d7850e301a3d5f70241f434053abcd162740fd3
       </Routes>
       <Footer />
     </Router>

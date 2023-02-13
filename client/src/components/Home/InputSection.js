@@ -117,14 +117,19 @@ function ImageUploader({ handleSubmit, result }) {
       >
         Submit
       </Button>
+<<<<<<< HEAD
       {result >= 0 && (
         <Typography className="result-text" sx={{ pt: 10 }} variant="h2">
+=======
+      {/* {result && (
+        <Typography className="result-text" sx={{ pt: 24 }} variant="h2">
+>>>>>>> 1d7850e301a3d5f70241f434053abcd162740fd3
           Your Image quality is{" "}
           <span style={{ color: resultColor }}>{resultText}</span>
           ! <br />
           {/* {result === 0 && "Please upload a clear picture"} */}
         </Typography>
-      )}
+      )} */}
     </Grid>
   );
 }
